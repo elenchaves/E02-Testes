@@ -10,20 +10,25 @@ public class QueueTest {
 
     private Queue<Integer> fila;
 
+
     @Before
     public void init() {
         this.fila = new Queue<>();
     }
+
 
     @Test
     public void testFilaVazia() {
         assertTrue(fila.estaVazia());
     }
 
+
     @Test
     public void testfilaNaoEstaVazia() {
+        fila.enfileirar(7); // Adicionei esse elemento na fila para que o teste não desse falha, pois a fila inicia vazia, então deve add um elemento para então fazer o teste.
         assertFalse(fila.estaVazia());
     }
+
 
     @Test
     public void testNumElementosNaFila() {
@@ -41,6 +46,7 @@ public class QueueTest {
         assertEquals(10, fila.tamanho());
     }
 
+
     @Test
     public void testEnfileirar() {
         fila.enfileirar(10);
@@ -50,8 +56,9 @@ public class QueueTest {
         assertEquals(3, fila.tamanho());
     }
 
+
     @Test
-    public void testDesenfileirar() {
+    public void testDesenfileirar() throws Exception {
         fila.enfileirar(10);
         fila.enfileirar(100);
         fila.enfileirar(1000);
@@ -63,8 +70,9 @@ public class QueueTest {
         assertEquals(100, retorno);
     }
 
+
     @Test(expected = java.lang.Exception.class)
-    public void testDesenfileirarFilaVazia() {
+    public void testDesenfileirarFilaVazia() throws Exception {
         fila.desenfileirar();
     }
 }
